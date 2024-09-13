@@ -43,15 +43,11 @@ export function authorize() {
 
         const permission = await PermissionModel.chekPermissions(user.id);
 
-        // const userPermissions = permissions.map((p) => p.permission);
-        console.log(permission);
-        // const hasPermission = userPermissions.includes(permission);
-
         // check if user has the required permission
-        // if (!hasPermission) {
-        //     next(new ApiError(HttpStatusCodes.FORBIDDEN, "Permissions required!"));
-        //     return;
-        // }
+        if (permission != "admin") {
+            next(new ApiError(HttpStatusCodes.FORBIDDEN, "Permissions required!"));
+            return;
+        }
 
         next();
     };

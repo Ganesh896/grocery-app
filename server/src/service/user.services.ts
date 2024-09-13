@@ -29,7 +29,6 @@ export async function registerUser(user: User) {
 // login user
 export async function loginUser(user: Pick<User, "email" | "password">) {
     const existingUser = await UserModel.getUserByEmail(user.email);
-
     if (!existingUser) {
         throw new ApiError(HttpStatusCodes.UNAUTHORIZED, "Invalid email or password");
     }

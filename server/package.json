@@ -10,7 +10,7 @@
         "migrate": "npm run knex migrate:latest --verbos",
         "rollback": "npm run knex migrate:rollback --verbos",
         "seed:make": "npm run knex seed:make --verbos",
-        "seed:run": "npm run knex seed:run --verbos"
+        "seed": "npm run knex seed:run --verbos"
     },
     "author": "",
     "license": "ISC",

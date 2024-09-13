@@ -1,9 +1,9 @@
 import { Knex } from "knex";
 
-const TABLE_NAME = "groceryItems";
+const TABLE_NAME = "grocery_items";
 
 /**
- * Delete existing entries and seed values for table TABLE_NAME.
+ * Delete existing entries and seed values for table grocery_items.
  *
  * @param   {Knex} knex
  * @returns {Promise}

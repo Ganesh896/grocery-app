@@ -1,9 +1,9 @@
 import { Knex } from "knex";
 
-const TABLE_NAME = "groceryItems";
+const TABLE_NAME = "grocery_items";
 
 /**
- * Create table groceryItems.
+ * Create table grocery_items.
  *
  * @param   {Knex} knex
  * @returns {Promise}
@@ -28,7 +28,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 /**
- * Drop table groceryItems.
+ * Drop table grocery_items.
  *
  * @param   {Knex} knex
  * @returns {Promise}

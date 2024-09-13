@@ -1,9 +1,9 @@
 import { Knex } from "knex";
 
-const TABLE_NAME = "table_name";
+const TABLE_NAME = "order_items";
 
 /**
- * Create table TABLE_NAME.
+ * Create table order_items.
  *
  * @param   {Knex} knex
  * @returns {Promise}
@@ -13,7 +13,7 @@ export async function up(knex: Knex): Promise<void> {
         table.bigIncrements();
 
         table.bigInteger("order_id").notNullable().references("id").inTable("orders").onDelete("cascade");
-        table.bigInteger("item_id").notNullable().references("id").inTable("groceryItems").onDelete("cascade");
+        table.bigInteger("item_id").notNullable().references("id").inTable("grocery_items").onDelete("cascade");
         table.bigInteger("quantity").notNullable();
         table.decimal("price", 10, 2).notNullable();
 
@@ -28,7 +28,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 /**
- * Drop table TABLE_NAME.
+ * Drop table order_items.
  *
  * @param   {Knex} knex
  * @returns {Promise}

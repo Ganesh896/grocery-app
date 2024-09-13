@@ -17,6 +17,8 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
 // login user
 export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     const user = req.body;
+    console.log(user);
     const data = await userService.loginUser(user);
+    console.log(data);
     res.status(HttpStatusCodes.OK).json(new ApiResponse(HttpStatusCodes.OK, data));
 });
