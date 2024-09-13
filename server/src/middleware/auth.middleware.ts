@@ -6,6 +6,7 @@ import { verify } from "jsonwebtoken";
 import { ApiError } from "../utils/ApiErrors";
 import config from "../config";
 import { User } from "../interface/user.interface";
+import { PermissionModel } from "../helper/checkPermissions";
 
 export function authenticate(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
@@ -31,7 +32,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
 }
 
 // middleware to authorize user based on permissions
-export function authorize(permission: string) {
+export function authorize() {
     return async (req: Request, res: Response, next: NextFunction) => {
         const user = req.user!;
 
@@ -40,17 +41,17 @@ export function authorize(permission: string) {
             return;
         }
 
-        const permissions = await PermissionModel.chekPermissions(Number(user.id));
+        const permission = await PermissionModel.chekPermissions(user.id);
 
-        const userPermissions = permissions.map((p) => p.permission);
-        console.log(userPermissions);
-        const hasPermission = userPermissions.includes(permission);
+        // const userPermissions = permissions.map((p) => p.permission);
+        console.log(permission);
+        // const hasPermission = userPermissions.includes(permission);
 
         // check if user has the required permission
-        if (!hasPermission) {
-            next(new ApiError(HttpStatusCodes.FORBIDDEN, "Permissions required!"));
-            return;
-        }
+        // if (!hasPermission) {
+        //     next(new ApiError(HttpStatusCodes.FORBIDDEN, "Permissions required!"));
+        //     return;
+        // }
 
         next();
     };
